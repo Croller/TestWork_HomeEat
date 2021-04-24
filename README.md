@@ -1,2 +1,6 @@
-# TestWork_HomeEat
-Test work
+# Test work
+
+## Run project develop
+
+npm run dev
+
