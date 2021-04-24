@@ -10,6 +10,8 @@ export const Z_INDEX = {};
 export const PALETTE = {
   white: '#FFFFFF',
   black: '#000000',
+
+  grey1: '#F7F7F7',
 };
 
 const fontsCommon = '\'Source Sans Pro\', Helvetica, sans-serif';
