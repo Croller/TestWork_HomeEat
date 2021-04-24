@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { getUrl } from 'client/utils/common';
 
 const api = axios.create({
-  crossdomain: true,
-  withCredentials: true,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
+  // crossdomain: true,
+  // withCredentials: true,
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*',
+  //   Accept: 'application/json',
+  //   'Content-Type': 'application/json',
+  // },
 });
 
 const error = {
@@ -44,34 +43,10 @@ export const get = async (path, params = null, options = {}) => {
   }
 
   try {
-    return await api.get(`${getUrl()}/api/${path}${query}`, { headers: { ...options } });
+    return await api.get(`${path}${query}`, { headers: { ...options } });
   } catch (err) {
     return setError(err, { 
-      url: `${getUrl()}/api/${path}${query}`,
-      params,
-      options,
-    });
-  }
-};
-
-export const post = async (path, params = {}, options = {}) => {
-  try {
-    return await api.post(`${getUrl()}/api/${path}`, params, { headers: { ...options } });
-  } catch (err) {
-    return setError(err, { 
-      url: `${getUrl()}/api/${path}`,
-      params,
-      options,
-    });
-  }
-};
-
-export const remove = async (path, params = {}, options = {}) => {
-  try {
-    return await api.delete(`${getUrl()}/api/${path}`, { headers: { ...options }, data: { ...params } });
-  } catch (err) {
-    return setError(err, { 
-      url: `${getUrl()}/api/${path}`,
+      url: `${path}${query}`,
       params,
       options,
     });

@@ -5,6 +5,7 @@ export const LayoutWrapper = styled.div`
 `;
 
 export const Cotainer = styled.div`
+  padding-top: 80px;
   display: block;
   height: auto;
 `;

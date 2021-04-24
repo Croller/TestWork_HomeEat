@@ -21,8 +21,8 @@ const LINK_LIST = [
     name: 'About',
   },
   {
-    key: 'careers',
-    name: 'Careers',
+    key: 'search',
+    name: 'Search',
   },
 ];
 

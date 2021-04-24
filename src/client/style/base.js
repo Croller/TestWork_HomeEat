@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     color: ${PALETTE.black};
-    background-color: ${PALETTE.grey1};
+    background-color: ${PALETTE.white};
     overflow-x: hidden
   }
 `;

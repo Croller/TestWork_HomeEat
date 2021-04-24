@@ -148,16 +148,24 @@ module.exports = {
   },
   devServer: {
     publicPath: '/',
-    host: '0.0.0.0',
+    host: process.env.LOCAL_HOST_IP,
     contentBase: './',
     port: process.env.LOCAL_CLIENT_PORT,
     open: false,
     hot: true,
     historyApiFallback: true,
     proxy: {
-      ...['/api', '/static'].reduce((obj, key) => ({ ...obj, [key]: `http://0.0.0.0:${process.env.LOCAL_SERVER_PORT}` }), {}),
-      secure: false,
-      changeOrigin: false,
+      ...['/thecocktaildb/api/'].reduce((obj, key) => ({
+        ...obj,
+        [key]: {
+          target: `http://${process.env.LOCAL_HOST_IP}:${process.env.LOCAL_CLIENT_PORT}/thecocktaildb/api/`,
+          pathRewrite: {
+            '^/thecocktaildb/api/': 'https://www.thecocktaildb.com/api/',
+          },
+        },
+      }), {}),
+      secure: true,
+      changeOrigin: true,
       // '/api': {
       //   target: `https://${process.env.HOST}:${process.env.HOST_SERVER_PORT}`,
       //   secure: false,

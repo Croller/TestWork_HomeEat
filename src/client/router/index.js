@@ -10,9 +10,8 @@ import {
 } from 'react-router-dom';
 
 import { Loader } from 'client/ui/components/_block/Loader';
-import { Layout } from 'client/ui/components/_block/Layout';
 
-const Search = lazy(() => import('client/ui/page/Search'));
+const Cocktail = lazy(() => import('client/ui/page/Cocktail'));
 
 export const Routers = () => (
   <React.Fragment>
@@ -23,10 +22,15 @@ export const Routers = () => (
     </Helmet>
     <Suspense fallback={<Loader />}>
       <Switch>
-        <Layout>
-          <Route path="/card" component={Search} />
-          <Route exact path="*" component={Search} />
-        </Layout>
+        <Route
+          path={[
+            '/cocktail/search',
+            '/cocktail/card/:id',
+          ]}
+          component={Cocktail}
+        />
+        <Route path="/404" />
+        <Redirect to="/cocktail/search" />
       </Switch>
     </Suspense>
   </React.Fragment>
